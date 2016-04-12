@@ -1,0 +1,29 @@
+<StackLayout class="main" stretch="fill">
+    <Label text="todos" class="title"></Label>
+    <GridLayout columns="30, *" rows="auto" class="new-item">
+        <Button *ngIf="todoStore.todos.length" text="&#xf078;" #toggleall [checked]="!todoStore.allCompleted()" class="{{ todoStore.allCompleted() ? 'fa chevon-bold' : 'fa chevron' }}" (tap)="todoStore.setAllTo(toggleall.checked)" col="0" ></Button>
+        <TextField class="new-item" [(ngModel)]="newTodoText" returnKeyType="done" (returnPress)="addTodo()" col="1"></TextField>
+    </GridLayout>
+    <StackLayout class="hr-bold"></StackLayout>
+    <ScrollView id="main">
+        <StackLayout>
+            <StackLayout *ngFor="#todo of todoStore.todos | completed:todoStore.completedFilter">
+                <GridLayout columns="auto, *, auto" rows="auto" class="todo">
+                    <Button text="{{ todo.completed ? '&#xf058;' : '&#xf1db;' }}" class="{{ todo.completed ? 'fa circles-completed' : 'fa circles' }}" col="0" (tap)="toggleCompletion(todo)" ></Button>
+                    <TextField [text]="todo.title" col="1" #editedTodo class="{{ todo.completed ? 'item completed' : 'item active' }}" (returnPress)="updateEditingTodo(todo, editedTodo.text)"></TextField>
+                    <Button text="&#xf00d;" col="2" (tap)="remove(todo)" class="fa remove-button-android"></Button>
+                </GridLayout>
+                <StackLayout class="hr"></StackLayout>
+            </StackLayout>
+            <StackLayout class="summary" *ngIf="todoStore.todos.length > 0">
+                <GridLayout columns="80, *, 160" class="todo" rows="auto, auto">
+                    <Label text="{{ todoStore.getRemaining().length }} {{ todoStore.getRemaining().length == 1 ? 'item' : 'items' }}" col="0" row="0"></Label>
+                    <Label *ngIf="todoStore.getCompleted().length > 0" text="Clear Completed" col="2" (tap)="removeCompleted()" class="clear-completed" row="0"></Label>
+                    <Filter [todoStore]="todoStore"></Filter>
+                </GridLayout>
+                <StackLayout class="hr"></StackLayout>
+                <Footer></Footer>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>

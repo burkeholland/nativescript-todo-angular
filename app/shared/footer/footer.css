@@ -1,0 +1,23 @@
+.bottom-1 {
+    margin: 0 2 0 2;
+    height: 5;
+    background-color: white;
+}
+
+.bottom-1-line {
+    height: 2;
+    background-color: #E6E6E6;
+    margin: 0 2 0 2;
+}
+
+.bottom-2 {
+    margin: 0 4 0 4;
+    height: 5;
+    background-color: white;
+}
+
+.bottom-2-line {
+    height: 2;
+    background-color: #E6E6E6;
+    margin: 0 4 0 4;
+}

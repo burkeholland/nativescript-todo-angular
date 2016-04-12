@@ -1,0 +1,15 @@
+Page {
+    
+}
+
+Button {
+    background-color: white;
+    border-color: white;
+    border-width: 1;
+}
+
+.fa {
+    padding: 0;
+    margin: 0;
+    width: 30;
+}
