@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from 'angular2/core';
+import {Component, Inject, OnInit} from 'angular2/core';
 import {TodoStore, Todo} from './services/store';
 import {FooterComponent} from './shared/footer/footer.component';
 import {FilterComponent} from './shared/filter/filter.component';
@@ -12,8 +12,7 @@ import {topmost} from 'ui/frame';
     providers: [TodoStore],
     directives: [FooterComponent, FilterComponent],
     styleUrls: ['app-common.css', 'app.css'],
-    pipes: [CompletedPipe],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    pipes: [CompletedPipe]
 })
 
 export class TodoApp implements OnInit {
