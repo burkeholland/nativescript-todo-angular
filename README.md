@@ -3,7 +3,7 @@ An Angular 2 implementation of TodoMVC for NativeScript
 
 ## Run it!
 
-Make sure you have NativeScript installed. Then....
+Make sure you have [NativeScript](www.nativescript.org) installed. Then....
 
 ````bash
 npm install
