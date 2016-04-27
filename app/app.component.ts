@@ -5,6 +5,7 @@ import {FilterComponent} from './shared/filter/filter.component';
 import {CompletedPipe} from './pipes/completed';
 import {Page} from 'ui/page';
 import {topmost} from 'ui/frame';
+var explosion = require('nativescript-explosionfield');
 
 @Component({
     selector: 'my-app',
@@ -47,9 +48,16 @@ export class TodoApp implements OnInit {
 		this.todoStore.toggleCompletion(todo);
 	}
 
-	remove(todo: Todo){
-		this.todoStore.remove(todo);
-	}
+	remove(event, todo: Todo) {
+        if (event.object.android) {
+            explosion.explode(event.object._parent);
+            setTimeout(() => {
+                this.todoStore.remove(todo);
+        }, 500);
+        } else {
+            this.todoStore.remove(todo);
+        }
+    }
 
 	addTodo() {
 		if (this.newTodoText.trim().length) {

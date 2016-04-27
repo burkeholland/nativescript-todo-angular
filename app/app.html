@@ -11,7 +11,7 @@
                 <GridLayout columns="auto, *, auto" rows="auto" class="todo">
                     <Button text="{{ todo.completed ? '&#xf058;' : '&#xf1db;' }}" class="{{ todo.completed ? 'fa circles-completed' : 'fa circles' }}" col="0" (tap)="toggleCompletion(todo)" ></Button>
                     <TextField [text]="todo.title" col="1" #editedTodo class="{{ todo.completed ? 'item completed' : 'item active' }}" (returnPress)="updateEditingTodo(todo, editedTodo.text)"></TextField>
-                    <Button text="&#xf00d;" col="2" (tap)="remove(todo)" class="fa remove-button-android"></Button>
+                    <Button text="&#xf00d;" col="2" (tap)="remove($event, todo)" class="fa remove-button-android"></Button>
                 </GridLayout>
                 <StackLayout class="hr"></StackLayout>
             </StackLayout>
