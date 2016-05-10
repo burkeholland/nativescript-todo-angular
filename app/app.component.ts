@@ -65,4 +65,9 @@ export class TodoApp implements OnInit {
 			this.newTodoText = '';
 		}
 	}
+ 
+    completedFilterChange(event) {
+        this.todoStore.completedFilter = event.value.value;
+    }   
+    
 }

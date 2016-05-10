@@ -1,2 +1,2 @@
-<SegmentedBar [items]="filterActions" #todoFilter row="1" colspan="3" class="toggles" (selectedIndexChanged)="todoStore.filterCompleted(filterActions[todoFilter.selectedIndex])" selectedBackgroundColor="#B76769">
+<SegmentedBar [items]="filterActions" #todoFilter row="1" colspan="3" class="toggles" (selectedIndexChanged)="filterCompleted(filterActions[todoFilter.selectedIndex])" selectedBackgroundColor="#B76769">
 </SegmentedBar>  

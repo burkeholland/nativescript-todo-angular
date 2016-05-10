@@ -1,5 +1,4 @@
 import {Injectable} from "angular2/core";
-import * as localStorage from 'application-settings';
 
 export class Todo {
 	completed: Boolean;
@@ -23,9 +22,10 @@ export class Todo {
 @Injectable()
 export class TodoStore {
 	todos: Array<Todo>;
+	completedFilter: boolean = null;
 
 	constructor() {
-		let persistedTodos = JSON.parse(localStorage.getString('angular2-todos') || '[]');
+		let persistedTodos = JSON.parse(localStorage.getItem('angular2-todos') || '[]');
 		// Normalize back into classes
 		this.todos = persistedTodos.map( (todo: {_title: String, completed: Boolean}) => {
 			let ret = new Todo(todo._title);
@@ -35,7 +35,7 @@ export class TodoStore {
 	}
 
 	private updateStore() {
-		localStorage.setString('angular2-todos', JSON.stringify(this.todos));
+		localStorage.setItem('angular2-todos', JSON.stringify(this.todos));
 	}
 
 	private getWithCompleted(completed: Boolean) {
@@ -77,9 +77,5 @@ export class TodoStore {
 	add(title: String) {
 		this.todos.push(new Todo(title));
 		this.updateStore();
-	}
-	
-	filterCompleted() {
-		console.log("completed");
 	}
 }

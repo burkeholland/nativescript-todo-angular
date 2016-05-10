@@ -1,5 +1,6 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Output, EventEmitter} from 'angular2/core';
 import {TodoStore} from '../../services/store';
+import {SegmentedBar} from 'ui/segmented-bar';
 
 @Component({
     selector: 'Filter',
@@ -8,7 +9,15 @@ import {TodoStore} from '../../services/store';
 })
 
 export class FilterComponent {
-    @Input() todoStore: TodoStore;
+    @Output() filterChange = new EventEmitter();
+    
+    completed: boolean = null;
+    
+    filterCompleted(filter: boolean) {
+        this.filterChange.emit({
+            value: filter
+        });
+    }
     
     filterActions: Array<any> = [
         { title: 'All', value: null },
