@@ -3,10 +3,10 @@ An Angular 2 implementation of TodoMVC for NativeScript
 
 ## Run it!
 
-Make sure you have [NativeScript](www.nativescript.org) installed. Then....
+Make sure you have [NativeScript installed](http://docs.nativescript.org/angular/tutorial/ng-chapter-1#11-install-nativescript-and-configure-your-environment). Then....
 
 ````bash
-npm install
+tns install
 
 tns livesync android --watch
 ````
